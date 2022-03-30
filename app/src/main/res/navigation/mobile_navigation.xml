@@ -33,8 +33,8 @@
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" />
     <fragment
-        android:id="@+id/musicFragment"
+        android:id="@+id/nav_playMusic"
         android:name="com.mirea.chubuka_v_a.mireaapp_android.MusicFragment"
-        android:label="fragment_music"
+        android:label="fragment_play_music"
         tools:layout="@layout/fragment_music" />
 </navigation>

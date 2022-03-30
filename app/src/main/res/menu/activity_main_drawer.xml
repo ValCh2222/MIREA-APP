@@ -24,5 +24,9 @@
             android:id="@+id/nav_webViewFragment"
             android:icon="@drawable/ic_web"
             android:title="@string/webView" />
+        <item
+            android:id="@+id/nav_playMusic"
+            android:icon="@drawable/ic_music"
+            android:title="@string/music" />
     </group>
 </menu>
