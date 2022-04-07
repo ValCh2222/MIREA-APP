@@ -37,4 +37,9 @@
         android:name="com.mirea.chubuka_v_a.mireaapp_android.MusicFragment"
         android:label="fragment_play_music"
         tools:layout="@layout/fragment_music" />
+    <fragment
+        android:id="@+id/nav_apparat"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ApparatFragment"
+        android:label="fragment_apparat"
+        tools:layout="@layout/fragment_apparat" />
 </navigation>
