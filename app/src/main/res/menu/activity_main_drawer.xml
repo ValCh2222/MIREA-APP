@@ -31,6 +31,10 @@
         <item
             android:id="@+id/nav_apparat"
             android:icon="@drawable/ic_baseline_mobile_friendly_24"
-            android:title="@string/music" />
+            android:title="@string/apparat" />
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/camera" />
     </group>
 </menu>
