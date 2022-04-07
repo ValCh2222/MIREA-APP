@@ -13,6 +13,7 @@ public class Settings_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        String name = findViewById(R.id.textView10).toString();
     }
     public void onMyButtonClick(View view)
     {
