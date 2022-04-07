@@ -1,14 +1,18 @@
 package com.mirea.chubuka_v_a.mireaapp_android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.mirea.chubuka_v_a.mireaapp_android.CalculateFragment;
 import com.mirea.chubuka_v_a.mireaapp_android.WebViewFragment;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -55,6 +59,30 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, @NonNull Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int item_id= item.getItemId();
+        if(item_id == R.id.settings)
+        {
+            Toast.makeText(this, "this is settings", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this,Settings_activity.class );
+            startActivity(intent);
+        }
+        if(item_id == R.id.exit)
+        {
+            Toast.makeText(this, "this is exit", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         return true;
     }
 
