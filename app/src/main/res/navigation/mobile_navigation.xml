@@ -47,4 +47,9 @@
         android:name="com.mirea.chubuka_v_a.mireaapp_android.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/nav_stories"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.StoryFragment"
+        android:label="fragment_stories"
+        tools:layout="@layout/fragment_story" />
 </navigation>
