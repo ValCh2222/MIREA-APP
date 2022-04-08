@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-import com.mirea.chubuka_v_a.mireaapp_android.CalculateFragment;
-import com.mirea.chubuka_v_a.mireaapp_android.WebViewFragment;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -82,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "this is exit", Toast.LENGTH_SHORT).show();
             finish();
+        }
+        if(item_id == R.id.fireBase)
+        {
+            Toast.makeText(this, "this is firebase", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, FireBaseActivity.class );
+            startActivity(intent);
         }
         return true;
     }

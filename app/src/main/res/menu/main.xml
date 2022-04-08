@@ -7,4 +7,7 @@
     <item android:title="@string/exit"
         android:id="@+id/exit"
         android:icon="@drawable/ic_exit"/>
+    <item android:title="to FireBase"
+        android:id="@+id/fireBase"
+        android:icon="@drawable/ic_fire"/>/>
 </menu>
