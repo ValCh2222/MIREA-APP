@@ -52,4 +52,9 @@
         android:name="com.mirea.chubuka_v_a.mireaapp_android.StoryFragment"
         android:label="fragment_stories"
         tools:layout="@layout/fragment_story" />
+    <fragment
+        android:id="@+id/nav_maps"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>
