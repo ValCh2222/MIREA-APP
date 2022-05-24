@@ -81,29 +81,29 @@ public class MapsFragment extends Fragment {
                     "55.7648399,37.7392163";
             googleMap.addMarker(new MarkerOptions().position(mirea5).title(titleMirea5).snippet(snippetMirea5));
 
-            LatLng mirea6 = new LatLng(55.7250254,37.6304868);
-            String titleMirea6 = "Колледж";
-            String snippetMirea6 = "Адрес: 1-й Щипковский переулок, д. 23 " +
-                    "55.7250254,37.6304868";
+            LatLng mirea6 = new LatLng(59.939099, 30.315877);
+            String titleMirea6 = "Санкт-Петербург";
+            String snippetMirea6 = "Санкт-Петербург " +
+                    "59.939099, 30.315877";
             googleMap.addMarker(new MarkerOptions().position(mirea6).title(titleMirea6).snippet(snippetMirea6));
 
 
-            LatLng mirea7 = new LatLng(55.728676,37.5708812);
-            String titleMirea7 = "ВУЦ";
-            String snippetMirea7 = "Адрес: ул. Усачева, д.7/1 " +
-                    "55.728676,37.5708812" ;
+            LatLng mirea7 = new LatLng(44.5622, 38.0848);
+            String titleMirea7 = "Геленджик";
+            String snippetMirea7 = "Геленджик " +
+                    "44.5622, 38.0848" ;
             googleMap.addMarker(new MarkerOptions().position(mirea7).title(titleMirea7).snippet(snippetMirea7));
 
-            LatLng mirea8 = new LatLng(45.0508385,41.9097125);
-            String titleMirea8 = "Филиал в г. Ставрополе";
-            String snippetMirea8 = "Адрес: Проспект Кулакова, д. 8 в квартале 601 "+
-                    "45.0508385,41.9097125";
+            LatLng mirea8 = new LatLng(	55.0968, 36.6101);
+            String titleMirea8 = "Обнинск";
+            String snippetMirea8 = "Обнинск "+
+                    "\t55.0968, 36.6101";
             googleMap.addMarker(new MarkerOptions().position(mirea8).title(titleMirea8).snippet(snippetMirea8));
 
-            LatLng mirea9 = new LatLng(55.9604333,38.049562);
-            String titleMirea9 = "Филиал в г. Фрязино";
-            String snippetMirea9 = "Адрес: ул. Вокзальная, д.2а" +
-                    "55.9604333,38.049562";
+            LatLng mirea9 = new LatLng(43.68054,40.21003);
+            String titleMirea9 = "Красная поляна";
+            String snippetMirea9 = "Сочи" +
+                    "43.68054,40.21003";
             googleMap.addMarker(new MarkerOptions().position(mirea9).title(titleMirea9).snippet(snippetMirea9));
 
             LatLng moscow = new LatLng(55.5815244,36.8251221);

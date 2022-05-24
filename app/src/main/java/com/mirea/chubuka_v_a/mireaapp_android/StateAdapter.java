@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mirea.chubuka_v_a.mireaapp_android.ui.History.HistoryFragment;
+
 import java.util.List;
 
 public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
@@ -16,7 +18,7 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
     private final LayoutInflater inflater;
     private final List<State> states;
 
-    StateAdapter(StoryFragment context, List<State> states) {
+    StateAdapter(HistoryFragment context, List<State> states) {
         this.states = states;
         this.inflater = LayoutInflater.from(context.getContext());
     }

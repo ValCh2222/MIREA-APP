@@ -1,12 +1,17 @@
 package com.mirea.chubuka_v_a.mireaapp_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -14,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mirea.chubuka_v_a.mireaapp_android.databinding.ActivityFireBase2Binding;
@@ -23,84 +29,59 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-public class FireBaseActivity extends AppCompatActivity {
-    private EditText emailEditText;
-    private EditText passwordTextEdit;
-    private TextView statusTextView;
-    private FirebaseAuth auth;
+public class FireBaseActivity extends AppCompatActivity implements View.OnClickListener{
+    private static final String TAG = MainActivity.class.getSimpleName();
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityFireBase2Binding binding;
+    private TextView statusTextView;
+    private EditText emailEditText;
+    private EditText passwordEditText;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityFireBase2Binding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
         setContentView(R.layout.activity_fire_base);
 
-        emailEditText = findViewById(R.id.email_input);
-        passwordTextEdit = findViewById(R.id.password_input);
-        statusTextView = findViewById(R.id.status_text_view);
+        statusTextView = findViewById(R.id.statusTextView);
+        emailEditText = findViewById(R.id.idVklEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
 
-        findViewById(R.id.sign_in_button).setOnClickListener(this::onClick);
-        findViewById(R.id.create_account_button).setOnClickListener(this::onClick);
-        findViewById(R.id.sign_out_button).setOnClickListener(this::onClick);
-        auth = FirebaseAuth.getInstance();
+        findViewById(R.id.signInBtn).setOnClickListener(this);
+        findViewById(R.id.createAccountBtn).setOnClickListener(this);
+        findViewById(R.id.signOutBtn).setOnClickListener(this);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_fire_base);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                int i = view.getId();
-                if (i == R.id.create_account_button) {
-                    createAccount(emailEditText.getText().toString(),
-                            passwordTextEdit.getText().toString());
-                } else if (i == R.id.sign_in_button) {
-                    signIn(emailEditText.getText().toString(),
-                            passwordTextEdit.getText().toString());
-                } else if (i == R.id.sign_out_button) {
-                    signOut();
-                }
-            }
-        });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_fire_base);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+        mAuth = FirebaseAuth.getInstance();
     }
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = auth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
 
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            statusTextView.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
-            findViewById(R.id.email_input).setVisibility(View.GONE);
-            findViewById(R.id.password_input).setVisibility(View.GONE);
-            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.create_account_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+    private void updateUI(FirebaseUser user){
+        if (user != null){
+            String status = getString(R.string.emailpassword_status_fmt, user.getEmail(), user.isEmailVerified());
+            statusTextView.setText(status);
 
+            findViewById(R.id.idVklEditText).setVisibility(View.GONE);
+            findViewById(R.id.passwordEditText).setVisibility(View.GONE);
+            findViewById(R.id.signInBtn).setVisibility(View.GONE);
+            findViewById(R.id.createAccountBtn).setVisibility(View.GONE);
+            findViewById(R.id.signOutBtn).setVisibility(View.GONE);
+
+            Intent intent = new Intent(FireBaseActivity.this, MainActivity.class);
+            startActivity(intent);
         } else {
-            statusTextView.setText(R.string.signed_out);
-            findViewById(R.id.password_input).setVisibility(View.VISIBLE);
-            findViewById(R.id.email_input).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.create_account_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+            String status = getString(R.string.signed_out);
+            statusTextView.setText(status);
+
+            findViewById(R.id.idVklEditText).setVisibility(View.VISIBLE);
+            findViewById(R.id.passwordEditText).setVisibility(View.VISIBLE);
+            findViewById(R.id.signInBtn).setVisibility(View.VISIBLE);
+            findViewById(R.id.createAccountBtn).setVisibility(View.VISIBLE);
+            findViewById(R.id.signOutBtn).setVisibility(View.VISIBLE);
         }
     }
 
@@ -113,70 +94,79 @@ public class FireBaseActivity extends AppCompatActivity {
         } else {
             emailEditText.setError(null);
         }
-        String password = passwordTextEdit.getText().toString();
+        String password = passwordEditText.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            passwordTextEdit.setError("Required.");
+            passwordEditText.setError("Required.");
             valid = false;
         } else {
-            passwordTextEdit.setError(null);
+            passwordEditText.setError(null);
         }
         return valid;
     }
-    public void onClick(View view) {
-        int i = view.getId();
-        if (i == R.id.create_account_button) {
-            createAccount(emailEditText.getText().toString(),
-                    passwordTextEdit.getText().toString());
-        } else if (i == R.id.sign_in_button) {
-            signIn(emailEditText.getText().toString(),
-                    passwordTextEdit.getText().toString());
-        } else if (i == R.id.sign_out_button) {
-            signOut();
-        }
-    }
 
     private void createAccount(String email, String password) {
+        Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
         }
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = auth.getCurrentUser();
-                        updateUI(user);
-                    } else {
-                        Toast.makeText(FireBaseActivity.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                        updateUI(null);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(FireBaseActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
+    }
+
+    private void signIn(String email, String password) {
+        Log.d(TAG, "signIn:" + email);
+        if (!validateForm()) {
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(FireBaseActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                        if (!task.isSuccessful()) {
+                            statusTextView.setText(R.string.auth_failed);
+                        }
                     }
                 });
     }
 
     private void signOut() {
-        auth.signOut();
+        mAuth.signOut();
         updateUI(null);
     }
 
-    private void signIn(String email, String password) {
-        if (!validateForm()) {
-            return;
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.createAccountBtn) {
+            createAccount(emailEditText.getText().toString(), passwordEditText.getText().toString());
+        } else if (i == R.id.signInBtn) {
+            signIn(emailEditText.getText().toString(), passwordEditText.getText().toString());
+        } else if (i == R.id.signOutBtn) {
+            signOut();
         }
-        auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = auth.getCurrentUser();
-                        updateUI(user);
-                    } else {
-                        Toast.makeText(FireBaseActivity.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                        updateUI(null);
-                    }
-                    if (!task.isSuccessful()) {
-                        statusTextView.setText(R.string.auth_failed);
-                    }
-                });
     }
-
-
-
 }

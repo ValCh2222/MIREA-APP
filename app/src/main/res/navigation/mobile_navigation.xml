@@ -48,10 +48,15 @@
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
     <fragment
-        android:id="@+id/nav_stories"
-        android:name="com.mirea.chubuka_v_a.mireaapp_android.StoryFragment"
-        android:label="fragment_stories"
-        tools:layout="@layout/fragment_story" />
+        android:id="@+id/nav_history"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ui.History.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/nav_add"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ui.History.AddHistoryFragment"
+        android:label="fragment_add_history"
+        tools:layout="@layout/fragment_add_history" />
     <fragment
         android:id="@+id/nav_maps"
         android:name="com.mirea.chubuka_v_a.mireaapp_android.MapsFragment"

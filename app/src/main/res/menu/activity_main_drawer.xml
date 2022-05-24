@@ -37,12 +37,16 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/camera" />
         <item
-            android:id="@+id/nav_stories"
+            android:id="@+id/nav_history"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/stories" />
         <item
+            android:id="@+id/nav_add"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/addstory" />
+        <item
             android:id="@+id/nav_maps"
             android:icon="@drawable/ic_map"
-            android:title="@string/maps" />
+            android:title="@string/map" />
     </group>
 </menu>
