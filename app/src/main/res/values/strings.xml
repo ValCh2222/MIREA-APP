@@ -49,5 +49,6 @@
     <string name="addstories" />
     <string name="map">map</string>
     <string name="addstory">addstory</string>
+    <string name="dictophone">dictophone</string>
 
 </resources>

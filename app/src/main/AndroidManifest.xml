@@ -2,13 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mirea.chubuka_v_a.mireaapp_android">
 
-
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MIREAAPPandroid">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/imagepaths" />
 
+        <service
+            android:name=".ui.Dictophone.DictaphoneService"
+            android:enabled="true"
+            android:exported="true" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -41,10 +47,6 @@
             android:name=".Settings_activity"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/filepaths" />
-
         <service
             android:name=".MusicService"
             android:enabled="true"
@@ -61,6 +63,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.mirea.chubuka_v_a.mireaapp_android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/imagepaths" />
+        </provider>
     </application>
 
 </manifest>
