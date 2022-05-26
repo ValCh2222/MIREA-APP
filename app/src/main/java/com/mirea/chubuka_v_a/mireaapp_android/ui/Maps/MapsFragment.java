@@ -1,4 +1,4 @@
-package com.mirea.chubuka_v_a.mireaapp_android;
+package com.mirea.chubuka_v_a.mireaapp_android.ui.Maps;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,11 +16,11 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mirea.chubuka_v_a.mireaapp_android.R;
 
 import java.io.IOException;
 import java.util.List;

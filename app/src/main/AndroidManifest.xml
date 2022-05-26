@@ -44,11 +44,11 @@
             android:label="@string/title_activity_fire_base"
             android:theme="@style/Theme.MIREAAPPandroid.NoActionBar" />
         <activity
-            android:name=".Settings_activity"
+            android:name=".ui.Settings.Settings_activity"
             android:exported="false" />
 
         <service
-            android:name=".MusicService"
+            android:name=".ui.AudioPlayer.MusicService"
             android:enabled="true"
             android:exported="true" />
 

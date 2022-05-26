@@ -1,9 +1,11 @@
-package com.mirea.chubuka_v_a.mireaapp_android;
+package com.mirea.chubuka_v_a.mireaapp_android.ui.AudioPlayer;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+
+import com.mirea.chubuka_v_a.mireaapp_android.R;
 
 public class MusicService extends Service {
 

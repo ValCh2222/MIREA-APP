@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
+import com.mirea.chubuka_v_a.mireaapp_android.ApparatFragment;
+import com.mirea.chubuka_v_a.mireaapp_android.CalculateFragment;
 import com.mirea.chubuka_v_a.mireaapp_android.R;
 
 public class HistoryFragment extends Fragment {
@@ -38,7 +40,7 @@ public class HistoryFragment extends Fragment {
             }
         });
 
-        AppDatabase db = App.getInstance().getDatabase();
+        ApparatFragment.AppDatabase db = CalculateFragment.App.getInstance().getDatabase();
         HistoryDao historyDao =  db.historyDao();
 
         List<History> historyList = historyDao.getAll();

@@ -1,4 +1,4 @@
-package com.mirea.chubuka_v_a.mireaapp_android;
+package com.mirea.chubuka_v_a.mireaapp_android.ui.Browser;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.mirea.chubuka_v_a.mireaapp_android;
+package com.mirea.chubuka_v_a.mireaapp_android.ui.Camera;
 
 import android.Manifest;
 import android.content.Intent;

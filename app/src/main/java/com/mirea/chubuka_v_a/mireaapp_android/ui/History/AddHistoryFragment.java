@@ -1,6 +1,5 @@
 package com.mirea.chubuka_v_a.mireaapp_android.ui.History;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +11,8 @@ import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import com.mirea.chubuka_v_a.mireaapp_android.ui.History.App;
-import com.mirea.chubuka_v_a.mireaapp_android.ui.History.AppDatabase;
+import com.mirea.chubuka_v_a.mireaapp_android.ApparatFragment;
+import com.mirea.chubuka_v_a.mireaapp_android.CalculateFragment;
 import com.mirea.chubuka_v_a.mireaapp_android.R;
 
 
@@ -36,7 +35,7 @@ public class AddHistoryFragment extends Fragment {
 
     public void onClickSaveStory(View view){
 
-        AppDatabase db = App.getInstance().getDatabase();
+        ApparatFragment.AppDatabase db = CalculateFragment.App.getInstance().getDatabase();
         HistoryDao historyDao = db.historyDao();
 
         History history = new History();

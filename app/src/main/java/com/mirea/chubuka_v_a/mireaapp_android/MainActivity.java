@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mirea.chubuka_v_a.mireaapp_android.databinding.ActivityMainBinding;
+import com.mirea.chubuka_v_a.mireaapp_android.ui.Settings.Settings_activity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         if(item_id == R.id.settings)
         {
             Toast.makeText(this, "this is settings", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this,Settings_activity.class );
+            Intent intent = new Intent(MainActivity.this, Settings_activity.class );
             startActivity(intent);
         }
         if(item_id == R.id.exit)

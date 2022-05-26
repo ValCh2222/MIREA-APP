@@ -1,8 +1,10 @@
 package com.mirea.chubuka_v_a.mireaapp_android;
 
+import android.app.Application;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -180,5 +182,24 @@ public class CalculateFragment extends Fragment {
     }
 
 
+    public static class App extends Application {
 
+        public static App instance;
+        private ApparatFragment.AppDatabase database;
+
+        @Override
+        public void onCreate() {
+            super.onCreate();
+            instance = this;
+            database = Room.databaseBuilder(this, ApparatFragment.AppDatabase.class, "database")
+                    .allowMainThreadQueries()
+                    .build();
+        }
+        public static App getInstance() {
+            return instance;
+        }
+        public ApparatFragment.AppDatabase getDatabase() {
+            return database;
+        }
+    }
 }

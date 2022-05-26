@@ -7,19 +7,17 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.mirea.chubuka_v_a.mireaapp_android.ui.History.History;
+import com.mirea.chubuka_v_a.mireaapp_android.ui.History.HistoryDao;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,4 +109,9 @@ public class ApparatFragment extends Fragment implements SensorEventListener {
     }
 
 
+    @Database(entities = {History.class}, version = 1)
+    public abstract static class AppDatabase extends RoomDatabase {
+
+        public abstract HistoryDao historyDao();
+    }
 }

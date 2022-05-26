@@ -1,4 +1,4 @@
-package com.mirea.chubuka_v_a.mireaapp_android.ui.History;
+package com.mirea.chubuka_v_a.mireaapp_android;
 
 import android.app.Application;
 

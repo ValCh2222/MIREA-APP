@@ -29,12 +29,12 @@
         tools:layout="@layout/fragment_calculate" />
     <fragment
         android:id="@+id/nav_webViewFragment"
-        android:name="com.mirea.chubuka_v_a.mireaapp_android.WebViewFragment"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ui.Browser.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" />
     <fragment
         android:id="@+id/nav_playMusic"
-        android:name="com.mirea.chubuka_v_a.mireaapp_android.MusicFragment"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ui.AudioPlayer.MusicFragment"
         android:label="fragment_play_music"
         tools:layout="@layout/fragment_music" />
     <fragment
@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_apparat" />
     <fragment
         android:id="@+id/nav_camera"
-        android:name="com.mirea.chubuka_v_a.mireaapp_android.CameraFragment"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ui.Camera.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
     <fragment
@@ -59,7 +59,7 @@
         tools:layout="@layout/fragment_add_history" />
     <fragment
         android:id="@+id/nav_maps"
-        android:name="com.mirea.chubuka_v_a.mireaapp_android.MapsFragment"
+        android:name="com.mirea.chubuka_v_a.mireaapp_android.ui.Maps.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
     <fragment

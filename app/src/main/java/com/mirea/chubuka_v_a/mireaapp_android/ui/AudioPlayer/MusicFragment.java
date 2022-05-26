@@ -1,6 +1,5 @@
-package com.mirea.chubuka_v_a.mireaapp_android;
+package com.mirea.chubuka_v_a.mireaapp_android.ui.AudioPlayer;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.mirea.chubuka_v_a.mireaapp_android.R;
 
 public class MusicFragment extends Fragment {
 
