@@ -50,5 +50,6 @@
     <string name="map">map</string>
     <string name="addstory">addstory</string>
     <string name="dictophone">dictophone</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>
