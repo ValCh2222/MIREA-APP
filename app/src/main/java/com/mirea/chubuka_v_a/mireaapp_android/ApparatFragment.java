@@ -108,10 +108,4 @@ public class ApparatFragment extends Fragment implements SensorEventListener {
 
     }
 
-
-    @Database(entities = {History.class}, version = 1)
-    public abstract static class AppDatabase extends RoomDatabase {
-
-        public abstract HistoryDao historyDao();
-    }
 }
